@@ -1,0 +1,97 @@
+/* ======================================================
+   VIDEO PLAYER
+   Vertical 9:16 tile used everywhere on the site.
+   ====================================================== */
+.video-tile {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ink);
+  aspect-ratio: 9 / 16;
+  box-shadow: inset 0 0 0 0px var(--palm);
+  transition: box-shadow 400ms ease;
+}
+@media (hover: hover) {
+  .video-tile:hover {
+    box-shadow: inset 0 0 0 1.5px var(--palm);
+  }
+}
+.video-tile--square {
+  aspect-ratio: 1 / 1;
+}
+
+.video-tile__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-tile__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--ink);
+  padding: 0 1.5rem;
+  text-align: center;
+}
+.video-tile__fallback--hidden {
+  display: none;
+}
+.video-tile__fallback-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: rgba(243, 239, 229, 0.4);
+}
+.video-tile__fallback-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(243, 239, 229, 0.6);
+}
+
+/* Signature motif — viewfinder brackets, shown on hover / when in view */
+.video-tile__bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--palm);
+  opacity: 0;
+  transition: opacity 600ms var(--ease-cinematic);
+  pointer-events: none;
+  z-index: 20;
+}
+.video-tile__bracket--tl { top: 10px; left: 10px; border-top: 1.5px solid; border-left: 1.5px solid; }
+.video-tile__bracket--bl { bottom: 10px; left: 10px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.video-tile__bracket--tr { top: 10px; right: 10px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.video-tile__bracket--br { bottom: 10px; right: 10px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+.video-tile:hover .video-tile__bracket,
+.video-tile.is-visible .video-tile__bracket {
+  opacity: 1;
+}
+
+.video-tile__sound {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 239, 229, 0.4);
+  background-color: rgba(26, 27, 23, 0.5);
+  color: var(--sand);
+  backdrop-filter: blur(2px);
+  transition: border-color 300ms ease;
+}
+.video-tile__sound:hover {
+  border-color: var(--sand);
+}
