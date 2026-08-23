@@ -50,6 +50,9 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
  * @param {boolean} [opts.autoplay=true] - false = native-controls "watch on demand" video:
  *   no autoplay, no forced mute, no loop, native browser controls (play/pause/seek/
  *   volume/fullscreen) shown at all times. Used for non-featured client gallery videos.
+ * @param {boolean} [opts.fullscreenOnClick=true] - false = clicking the video does NOT
+ *   open fullscreen; used when the whole tile is itself a navigation link (e.g. the
+ *   homepage Best Content card), so a click on the video navigates normally instead.
  * @returns {HTMLElement}
  */
 export function createVideoTile({
@@ -61,6 +64,7 @@ export function createVideoTile({
   square = false,
   showFrame = true,
   autoplay = true,
+  fullscreenOnClick = true,
 } = {}) {
   const wrap = document.createElement("div");
   wrap.className = `video-tile${square ? " video-tile--square" : ""}`;
@@ -151,14 +155,16 @@ export function createVideoTile({
       video.addEventListener("loadedmetadata", attemptPlay);
       video.addEventListener("canplay", attemptPlay);
 
-      // Click/tap anywhere on the video → fullscreen. Doesn't touch
-      // play/pause — the video keeps looping/autoplaying as before;
-      // this only ever opens fullscreen, never closes it prematurely.
-      video.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        requestVideoFullscreen(video);
-      });
+      if (fullscreenOnClick) {
+        // Click/tap anywhere on the video → fullscreen. Doesn't touch
+        // play/pause — the video keeps looping/autoplaying as before;
+        // this only ever opens fullscreen, never closes it prematurely.
+        video.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          requestVideoFullscreen(video);
+        });
+      }
     }
     // When autoplay is false, native `controls` already gives play/pause,
     // seek, volume, and a fullscreen button — no custom click handling

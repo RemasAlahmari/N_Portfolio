@@ -1,6 +1,9 @@
 // ======================================================
 // BEST CONTENT (highlight preview) COMPONENT
-// Homepage gateway into work.html, using HL_1.
+// Homepage gateway into work.html, using HL_1. The card
+// is sized to match the video itself (no separate text
+// panel) — the eyebrow/title/CTA are overlaid on the
+// video's top-left corner instead.
 // ======================================================
 import { highlights } from "../data.js";
 import { getHighlightVideoSrc, getPosterSrc } from "../media.js";
@@ -17,32 +20,31 @@ export function renderHighlightPreview(mount, { root = "" } = {}) {
   link.className = "best-content";
   link.setAttribute("aria-label", "Open Best Content — go to Selected Work");
 
-  link.innerHTML = `
-    <div class="best-content__text">
-      <div>
-        <span class="best-content__eyebrow">Featured</span>
-        <h2 class="best-content__title">Best<br />Content</h2>
-      </div>
-      <span class="best-content__cta">
-        Best Content
-        <svg width="14" height="10" viewBox="0 0 24 16" fill="none" aria-hidden="true">
-          <path d="M1 8h21M15 1l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </div>
-    <div class="best-content__video-wrap"></div>
+  const overlay = document.createElement("div");
+  overlay.className = "best-content__overlay";
+  overlay.innerHTML = `
+    <span class="best-content__eyebrow">Featured</span>
+    <h2 class="best-content__title">Best<br />Content</h2>
+    <span class="best-content__cta">
+      Best Content
+      <svg width="14" height="10" viewBox="0 0 24 16" fill="none" aria-hidden="true">
+        <path d="M1 8h21M15 1l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
   `;
 
-  const videoWrap = link.querySelector(".best-content__video-wrap");
   const tile = createVideoTile({
     src: getHighlightVideoSrc(featured.file, root),
     poster: getPosterSrc(featured.file, root),
     fallbackLabel: featured.id,
     priority: true,
     showFrame: true,
+    fullscreenOnClick: false, // clicking the video navigates to work.html instead
   });
   tile.classList.add("best-content__video");
-  videoWrap.appendChild(tile);
+
+  link.appendChild(tile);
+  link.appendChild(overlay);
 
   section.appendChild(link);
   mount.appendChild(section);
