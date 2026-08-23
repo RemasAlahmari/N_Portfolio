@@ -119,7 +119,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(26, 27, 23, 0.95);
-  padding: 1rem;
+  padding: 0;
 }
 @media (min-width: 640px) {
   .best-content__video-wrap {
@@ -129,12 +129,13 @@
 }
 .best-content__video {
   width: 100%;
-  max-width: 280px;
-  max-height: 68vh;
+  max-width: none;
+  max-height: none;
 }
 @media (min-width: 640px) {
   .best-content__video {
     max-width: 300px;
+    max-height: 68vh;
   }
 }
 
