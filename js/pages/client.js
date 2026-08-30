@@ -8,7 +8,6 @@ import { renderFooter } from "../components/footer.js";
 import { clients } from "../data.js";
 import { getClientVideoSrc, getPosterSrc } from "../media.js";
 import { createVideoTile } from "../components/videoTile.js";
-import { renderPerformanceStats } from "../components/performanceStats.js";
 import { renderVideoGallery } from "../components/videoGallery.js";
 import { observeReveal } from "../reveal.js";
 
@@ -25,7 +24,7 @@ if (index === -1) {
   main.innerHTML = `
     <section class="gallery page-header">
       <h1 class="page-header__title">Client not found</h1>
-      <p style="margin-top:1rem"><a href="${root}index.html" class="stats__watch">← Back home</a></p>
+      <p style="margin-top:1rem"><a href="${root}index.html" class="watch-button">← Back home</a></p>
     </section>
   `;
 } else {
@@ -41,7 +40,6 @@ if (index === -1) {
   crumbs.className = "gallery client-crumbs";
   crumbs.innerHTML = `
     <a href="${root}index.html">← All Clients</a>
-    <a href="${root}work.html">Selected Work</a>
   `;
   main.appendChild(crumbs);
 
@@ -49,13 +47,13 @@ if (index === -1) {
   const header = document.createElement("section");
   header.className = "gallery client-header";
   header.innerHTML = `
-    <p class="client-header__code">${client.id}</p>
+    <p class="client-header__code">${client.displayCode || client.id}</p>
     <h1 class="client-header__name">${client.name}</h1>
     <p class="client-header__arabic">${client.arabicName}</p>
   `;
   main.appendChild(header);
 
-  // Featured
+  // Featured — video only, no performance stats shown on client pages
   const featuredSection = document.createElement("section");
   featuredSection.className = "gallery client-featured";
 
@@ -64,22 +62,13 @@ if (index === -1) {
   const featuredTile = createVideoTile({
     src: getClientVideoSrc(client, client.featuredVideo, root),
     poster: getPosterSrc(client.featuredVideo, root),
-    fallbackLabel: `${client.id} — Featured`,
+    fallbackLabel: `${client.displayCode || client.id} — Featured`,
     allowSound: true,
     priority: true,
   });
   videoCol.appendChild(featuredTile);
 
-  const statsCol = document.createElement("div");
-  statsCol.className = "client-featured__stats";
-  renderPerformanceStats(statsCol, {
-    clientName: client.name,
-    clientArabicName: client.arabicName,
-    metrics: client.featuredMetadata,
-  });
-
   featuredSection.appendChild(videoCol);
-  featuredSection.appendChild(statsCol);
   main.appendChild(featuredSection);
 
   // All work

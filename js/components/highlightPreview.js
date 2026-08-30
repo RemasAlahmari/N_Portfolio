@@ -1,5 +1,5 @@
 // ======================================================
-// BEST CONTENT (highlight preview) COMPONENT
+// THE HIGHLIGHTS (highlight preview) COMPONENT
 // Homepage gateway into work.html, using HL_1. The card
 // is sized to match the video itself (no separate text
 // panel) — the eyebrow/title/CTA are overlaid on the
@@ -18,15 +18,15 @@ export function renderHighlightPreview(mount, { root = "" } = {}) {
   const link = document.createElement("a");
   link.href = `${root}work.html`;
   link.className = "best-content";
-  link.setAttribute("aria-label", "Open Best Content — go to Selected Work");
+  link.setAttribute("aria-label", "Open The Highlights — go to Highlight");
 
   const overlay = document.createElement("div");
   overlay.className = "best-content__overlay";
   overlay.innerHTML = `
     <span class="best-content__eyebrow">Featured</span>
-    <h2 class="best-content__title">Best<br />Content</h2>
+    <h2 class="best-content__title">The<br />Highlights</h2>
     <span class="best-content__cta">
-      Best Content
+      Explore
       <svg width="14" height="10" viewBox="0 0 24 16" fill="none" aria-hidden="true">
         <path d="M1 8h21M15 1l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>

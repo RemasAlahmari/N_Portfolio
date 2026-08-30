@@ -1,7 +1,9 @@
 // ======================================================
 // CONTACT SECTION COMPONENT (homepage strip)
+// Just the WhatsApp CTA — Instagram/TikTok/email already
+// live in the footer on every page, so they're not
+// repeated here.
 // ======================================================
-import { contact } from "../data.js";
 import { getWhatsAppUrl } from "../contact.js";
 import { observeReveal } from "../reveal.js";
 
@@ -25,16 +27,6 @@ export function renderContactSection(mount) {
   `;
   observeReveal(cta);
 
-  const socials = document.createElement("div");
-  socials.className = "contact-socials";
-  socials.innerHTML = `
-    <a href="${contact.instagramUrl}" target="_blank" rel="noopener noreferrer">Instagram — @${contact.instagramHandle}</a>
-    <a href="${contact.tiktokUrl}" target="_blank" rel="noopener noreferrer">TikTok — @${contact.tiktokHandle}</a>
-    <a href="mailto:${contact.email}">${contact.email}</a>
-  `;
-  observeReveal(socials, { delay: 120 });
-
   section.appendChild(cta);
-  section.appendChild(socials);
   mount.appendChild(section);
 }

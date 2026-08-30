@@ -1,5 +1,5 @@
 // ======================================================
-// SELECTED WORK PAGE (work.html)
+// HIGHLIGHT PAGE (work.html)
 // ======================================================
 import { renderNavbar } from "../components/nav.js";
 import { renderFooter } from "../components/footer.js";
@@ -16,8 +16,8 @@ const main = document.getElementById("main");
 const header = document.createElement("section");
 header.className = "gallery page-header";
 header.innerHTML = `
-  <p class="page-header__eyebrow">Selected Work</p>
-  <h1 class="page-header__title">Seven pieces,<br />worth your time.</h1>
+  <p class="page-header__eyebrow">Highlight</p>
+  <h1 class="page-header__title">Worth your time.</h1>
 `;
 main.appendChild(header);
 

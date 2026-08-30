@@ -3,6 +3,11 @@
 // Renders into any element with id="navbar-root".
 // `root` = "" on top-level pages, "../" from /clients/*.html
 // `active` = "home" | "work" | "contact" | null
+//
+// The header stays visible while scrolling up and at the
+// very top of the page; it becomes unobtrusive (slides
+// out of view) only while actively scrolling down past a
+// small threshold, so it's always easy to get back to.
 // ======================================================
 import { profile } from "../data.js";
 
@@ -12,7 +17,7 @@ export function renderNavbar({ root = "", active = null } = {}) {
 
   const links = [
     { href: `${root}index.html`, label: "Home", key: "home" },
-    { href: `${root}work.html`, label: "Work", key: "work" },
+    { href: `${root}work.html`, label: "Highlight", key: "work" },
     { href: `${root}contact.html`, label: "Contact", key: "contact" },
   ];
 
@@ -38,7 +43,34 @@ export function renderNavbar({ root = "", active = null } = {}) {
   `;
 
   const header = document.getElementById("site-navbar");
-  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY;
+    header.classList.toggle("is-scrolled", y > 12);
+
+    if (y <= 12) {
+      header.classList.remove("is-hidden"); // always visible at the top
+    } else if (y > lastY + 4) {
+      header.classList.add("is-hidden"); // scrolling down
+    } else if (y < lastY - 4) {
+      header.classList.remove("is-hidden"); // scrolling up
+    }
+
+    lastY = y;
+    ticking = false;
+  };
+
+  update();
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
 }

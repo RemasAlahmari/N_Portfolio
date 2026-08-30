@@ -43,8 +43,8 @@ export const profile = {
 // figures here.
 // ------------------------------------------------------
 export const performance = {
-  totalViews: "TBD",
-  totalShares: "TBD",
+  totalViews: "26.5M+",
+  totalShares: "21.8K+",
   totalNewFollowers: "TBD",
 };
 
@@ -54,6 +54,12 @@ export const performance = {
 // `folder` is the subfolder under /videos/.
 // `logo` is the filename under /images/logos/, shown in
 // the homepage client boxes (see getLogoSrc in media.js).
+// `displayCode` (optional) overrides the short code shown
+// in the UI (client-tile / client-header badges) when it
+// should differ from the internal `id` — used here so the
+// Ministry of Health badge doesn't visibly show "HAJJ"
+// while the id/folder/filenames (tied to already-uploaded
+// Cloudinary assets) stay untouched.
 // ------------------------------------------------------
 export const clients = [
   {
@@ -63,7 +69,7 @@ export const clients = [
     logo: "sef.png",
     name: "Saudi Esports Federation",
     arabicName: "الاتحاد السعودي للرياضات الإلكترونية",
-    featuredVideo: "SEF_1.MOV", // TBD — confirm best-performing video
+    featuredVideo: "SEF_1.MOV",
     videos: ["SEF_1.MOV", "SEF_2.MOV", "SEF_3.MOV", "SEF_4.MOV", "SEF_5.MOV", "SEF_6.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
@@ -74,7 +80,7 @@ export const clients = [
     logo: "diriyah.png",
     name: "Diriyah",
     arabicName: "الدرعية",
-    featuredVideo: "DIR_1.MOV", // TBD
+    featuredVideo: "DIR_1.MOV",
     videos: [
       "DIR_1.MOV", "DIR_2.MOV", "DIR_3.MOV", "DIR_4.MOV",
       "DIR_5.MOV", "DIR_6.MOV", "DIR_7.MOV", "DIR_8.MOV",
@@ -88,7 +94,7 @@ export const clients = [
     logo: "qiddiya.png",
     name: "Qiddiya",
     arabicName: "القدية",
-    featuredVideo: "QID_1.MOV", // TBD
+    featuredVideo: "QID_2.MOV",
     videos: ["QID_1.MOV", "QID_2.MOV", "QID_3.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
@@ -99,7 +105,7 @@ export const clients = [
     logo: "tpac.png",
     name: "Theater and Performing Arts Commission",
     arabicName: "هيئة المسرح والفنون الأدائية",
-    featuredVideo: "TPAC_1.MOV", // TBD
+    featuredVideo: "TPAC_2.MOV",
     videos: ["TPAC_1.MOV", "TPAC_2.MOV", "TPAC_3.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
@@ -108,14 +114,13 @@ export const clients = [
     page: "mof-hajj.html",
     folder: "mof-hajj",
     logo: "moh-hajj.png",
-    name: "Ministry of Health — Hajj",
-    arabicName: "وزارة الصحة — الحج",
-    featuredVideo: "MOF_HAJJ_1.MOV", // TBD
+    displayCode: "MOH",
+    name: "Ministry of Health",
+    arabicName: "وزارة الصحة",
+    featuredVideo: "MOF_HAJJ_4.MOV",
     videos: [
       "MOF_HAJJ_1.MOV", "MOF_HAJJ_2.MOV", "MOF_HAJJ_3.MOV", "MOF_HAJJ_4.MOV",
-      "MOF_HAJJ_5.MOV", "MOF_HAJJ_6.MOV", "MOF_HAJJ_7.MOV", "MOF_HAJJ_8.MOV",
-      "MOF_HAJJ_9.MOV", "MOF_HAJJ_10.MOV", "MOF_HAJJ_11.MOV", "MOF_HAJJ_12.MOV",
-      "MOF_HAJJ_13.MOV",
+      "MOF_HAJJ_7.MOV", "MOF_HAJJ_8.MOV", "MOF_HAJJ_13.MOV",
     ],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
@@ -126,29 +131,72 @@ export const clients = [
     logo: "sfa.png",
     name: "Saudi Sports for All Federation",
     arabicName: "الاتحاد السعودي للرياضة للجميع",
-    featuredVideo: "SFA_1.MOV", // TBD
+    featuredVideo: "SFA_1.MOV",
     videos: [
       "SFA_1.MOV", "SFA_2.MOV", "SFA_3.MOV", "SFA_4.MOV",
-      "SFA_5.MOV", "SFA_6.MOV", "SFA_7.MOV", "SFA_8.MOV",
-      "SFA_9.MOV", "SFA_10.MOV", "SFA_11.MOV", "SFA_12.MOV",
-      "SFA_13.MOV",
+      "SFA_7.MOV", "SFA_9.MOV", "SFA_12.MOV", "SFA_13.MOV",
     ],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
 ];
 
 // ------------------------------------------------------
-// SELECTED WORK — seven highlights, curated from clients
-// above. These reference existing client videos so the
-// total video count is never double-counted.
+// HIGHLIGHTS — exactly 5, curated from the clients above.
+// These reference existing client videos (same Cloudinary
+// asset, different lookup key) so nothing is duplicated.
+// `sourceClient` must match a client's `id` above.
+// `likes` / `shares` are intentionally left "TBD" — the
+// highlight page only displays Views for these five.
 // ------------------------------------------------------
 export const highlights = [
-  { id: "HL_1", file: "HL_1.MOV", sourceClient: "TBD", platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
-  { id: "HL_2", file: "HL_2.MOV", sourceClient: "TBD", platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
-  { id: "HL_3", file: "HL_3.MOV", sourceClient: "TBD", platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
-  { id: "HL_4", file: "HL_4.MOV", sourceClient: "TBD", platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
-  { id: "HL_5", file: "HL_5.MOV", sourceClient: "TBD", platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
-  { id: "HL_6", file: "HL_6.MOV", sourceClient: "TBD", platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
-  { id: "HL_7", file: "HL_7.MOV", sourceClient: "TBD", platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
+  {
+    id: "HL_1",
+    file: "HL_1.MOV",
+    sourceClient: "MOF_HAJJ",
+    platform: "TikTok",
+    views: "16.2M",
+    likes: "TBD",
+    shares: "TBD",
+    url: "https://www.tiktok.com/@saudimoh/video/7641634913866812693?is_from_webapp=1",
+  },
+  {
+    id: "HL_2",
+    file: "HL_2.MOV",
+    sourceClient: "MOF_HAJJ",
+    platform: "TikTok",
+    views: "2.6M",
+    likes: "TBD",
+    shares: "TBD",
+    url: "https://www.tiktok.com/@saudimoh/video/7644197983151574293?is_from_webapp=1",
+  },
+  {
+    id: "HL_3",
+    file: "HL_3.MOV",
+    sourceClient: "MOF_HAJJ",
+    platform: "TikTok",
+    views: "2.5M",
+    likes: "TBD",
+    shares: "TBD",
+    url: "https://www.tiktok.com/@saudimoh/video/7642376582866226452?is_from_webapp=1",
+  },
+  {
+    id: "HL_4",
+    file: "HL_4.MOV",
+    sourceClient: "SFA",
+    platform: "Instagram",
+    views: "625K",
+    likes: "TBD",
+    shares: "TBD",
+    url: "https://www.instagram.com/reel/DULEuONDOMZ/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+  },
+  {
+    id: "HL_5",
+    file: "HL_5.MOV",
+    sourceClient: "SFA",
+    platform: "TikTok",
+    views: "1M",
+    likes: "TBD",
+    shares: "TBD",
+    url: "https://www.tiktok.com/@saudi_sfa/video/7585213913936006407?is_from_webapp=1",
+  },
 ];
-
