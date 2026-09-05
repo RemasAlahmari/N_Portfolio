@@ -16,6 +16,50 @@
   transform: translateY(-100%);
 }
 
+/* ======================================================
+   GO-TO-TOP BUTTON
+   ====================================================== */
+.go-to-top {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--palm);
+  color: var(--sand);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 400ms var(--ease-cinematic), transform 400ms var(--ease-cinematic), background-color 300ms ease;
+}
+.go-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+@media (hover: hover) {
+  .go-to-top:hover {
+    background-color: var(--palm-deep);
+  }
+}
+@media (min-width: 640px) {
+  .go-to-top {
+    left: 2rem;
+    bottom: 2rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .go-to-top {
+    transition: opacity 200ms linear;
+    transform: none;
+  }
+}
+
 .navbar__inner {
   display: flex;
   align-items: center;

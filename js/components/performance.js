@@ -1,9 +1,8 @@
 // ======================================================
 // PERFORMANCE COMPONENT
 // Homepage strip showing Total Views / Total Shares /
-// Total New Followers. Values come straight from
-// data.js — "TBD" renders as an em dash, never an
-// invented number.
+// Total Likes. Values come straight from data.js —
+// "TBD" renders as an em dash, never an invented number.
 // ======================================================
 import { performance as performanceData } from "../data.js";
 import { observeReveal } from "../reveal.js";
@@ -12,7 +11,7 @@ export function renderPerformance(mount) {
   const stats = [
     { value: performanceData.totalViews, label: "Total Views" },
     { value: performanceData.totalShares, label: "Total Shares" },
-    { value: performanceData.totalNewFollowers, label: "Total New Followers" },
+    { value: performanceData.totalLikes, label: "Total Likes" },
   ];
 
   const section = document.createElement("section");

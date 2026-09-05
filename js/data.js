@@ -45,7 +45,7 @@ export const profile = {
 export const performance = {
   totalViews: "26.5M+",
   totalShares: "21.8K+",
-  totalNewFollowers: "TBD",
+  totalLikes: "313K+",
 };
 
 // ------------------------------------------------------

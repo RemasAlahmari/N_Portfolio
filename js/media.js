@@ -161,8 +161,34 @@ export function getHighlightVideoSrc(filename, root = "") {
 // ------------------------------------------------------
 // Poster / thumbnail
 // ------------------------------------------------------
+// Wherever a video is hosted on Cloudinary, we derive its
+// poster directly from Cloudinary itself — requesting the
+// exact same public asset with a `.jpg` extension and the
+// `so_0` transformation returns a JPG of the video's real
+// first frame. Cloudinary generates and caches this on the
+// CDN on first request, so it's fast and never requires
+// downloading the video itself just to get a thumbnail.
+//
+// Videos not yet uploaded to Cloudinary fall back to the
+// local /images/posters/<filename>.jpg convention, same as
+// before (silently absent until one is added there).
+// ------------------------------------------------------
+
+function toCloudinaryFirstFramePoster(videoUrl) {
+  const match = videoUrl.match(/^(https:\/\/res\.cloudinary\.com\/[^/]+\/video\/upload\/)(.+)$/);
+  if (!match) return null;
+  const [, base, rest] = match;
+  const withoutExtension = rest.replace(/\.[a-zA-Z0-9]+$/, "");
+  return `${base}so_0/${withoutExtension}.jpg`;
+}
 
 export function getPosterSrc(filename, root = "") {
+  const cloudinaryVideoUrl = clientVideoUrls[filename] || highlightVideoUrls[filename];
+  if (cloudinaryVideoUrl) {
+    const posterUrl = toCloudinaryFirstFramePoster(cloudinaryVideoUrl);
+    if (posterUrl) return posterUrl;
+  }
+
   const base = filename.replace(/\.[^.]+$/, "");
   return `${root}images/posters/${base}.jpg`;
 }

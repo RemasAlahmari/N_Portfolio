@@ -100,47 +100,71 @@
   letter-spacing: 0.28em;
   color: var(--palm);
 }
-.stats__client-arabic {
-  margin-top: 0.2rem;
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: rgba(26, 27, 23, 0.45);
-  direction: rtl;
+
+/* Wraps the metric(s) + watch button so they can sit side
+   by side on mobile, and stay stacked on desktop exactly
+   as before. */
+.stats__meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
-.stats__platform {
-  margin-top: 0.25rem;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  color: rgba(26, 27, 23, 0.5);
+@media (min-width: 640px) {
+  .stats__meta-row {
+    display: block;
+  }
 }
+
 .stats__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, max-content));
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
 }
 @media (min-width: 640px) {
   .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, max-content));
     gap: 1.5rem;
   }
 }
+/* Mobile: value + label share one compact baseline-aligned
+   line ("16.2M Views"). Desktop: back to the original
+   stacked label-then-value cell. */
+.stats__grid > div {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+@media (min-width: 640px) {
+  .stats__grid > div {
+    display: block;
+  }
+}
+
 .stats__label {
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.2em;
   color: var(--palm);
 }
+@media (min-width: 640px) {
+  .stats__label {
+    letter-spacing: 0.28em;
+  }
+}
 .stats__value {
-  margin-top: 0.25rem;
   font-family: var(--font-display);
   font-weight: 700;
   color: var(--ink);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 @media (min-width: 640px) {
   .stats__value {
+    margin-top: 0.25rem;
     font-size: 1.5rem;
   }
 }
@@ -152,18 +176,26 @@
 .watch-button {
   display: inline-flex;
   width: fit-content;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.65rem 1.1rem;
   background-color: var(--palm);
   border-radius: 2px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   color: var(--sand);
   transition: background-color 300ms ease, transform 300ms var(--ease-cinematic);
+}
+@media (min-width: 640px) {
+  .watch-button {
+    margin-top: 2rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+  }
 }
 .watch-button:hover {
   background-color: var(--palm-deep);

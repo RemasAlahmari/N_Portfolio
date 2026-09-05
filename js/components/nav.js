@@ -10,6 +10,7 @@
 // small threshold, so it's always easy to get back to.
 // ======================================================
 import { profile } from "../data.js";
+import { renderGoToTop } from "./goToTop.js";
 
 export function renderNavbar({ root = "", active = null } = {}) {
   const mount = document.getElementById("navbar-root");
@@ -73,4 +74,6 @@ export function renderNavbar({ root = "", active = null } = {}) {
     },
     { passive: true }
   );
+
+  renderGoToTop();
 }

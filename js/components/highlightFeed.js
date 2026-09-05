@@ -14,7 +14,6 @@ export function renderHighlightFeed(mount, { highlights, root = "" }) {
   highlights.forEach((h, i) => {
     const client = h.sourceClient !== "TBD" ? findClient(h.sourceClient) : undefined;
     const clientName = client ? client.name : "Client — TBD";
-    const clientArabicName = client ? client.arabicName : undefined;
 
     const article = document.createElement("article");
     article.className = "highlight";
@@ -40,7 +39,6 @@ export function renderHighlightFeed(mount, { highlights, root = "" }) {
     statsCol.className = "highlight__stats-col";
     renderPerformanceStats(statsCol, {
       clientName,
-      clientArabicName,
       metrics: { platform: h.platform, views: h.views, likes: h.likes, shares: h.shares, url: h.url },
     });
 
