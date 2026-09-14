@@ -187,6 +187,7 @@
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--sand);
+  transform: translateX(6px);
   transition: background-color 300ms ease, transform 300ms var(--ease-cinematic);
 }
 @media (min-width: 640px) {
@@ -199,7 +200,7 @@
 }
 .watch-button:hover {
   background-color: var(--palm-deep);
-  transform: translateX(2px);
+  transform: translateX(9px);
 }
 
 /* ======================================================

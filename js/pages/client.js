@@ -43,13 +43,11 @@ if (index === -1) {
   `;
   main.appendChild(crumbs);
 
-  // Header
+  // Header — English name only (no Arabic name, no short code)
   const header = document.createElement("section");
   header.className = "gallery client-header";
   header.innerHTML = `
-    <p class="client-header__code">${client.displayCode || client.id}</p>
     <h1 class="client-header__name">${client.name}</h1>
-    <p class="client-header__arabic">${client.arabicName}</p>
   `;
   main.appendChild(header);
 
@@ -82,13 +80,13 @@ if (index === -1) {
   renderVideoGallery(gallerySection, { client, files: remainingVideos, root });
   main.appendChild(gallerySection);
 
-  // Prev / next
+  // Prev / next — short codes (some full names are too long for this row)
   const pager = document.createElement("section");
   pager.className = "client-pager";
   pager.innerHTML = `
     <div class="gallery client-pager__inner">
-      <a href="${root}clients/${prevClient.page}">← ${prevClient.name}</a>
-      <a href="${root}clients/${nextClient.page}">${nextClient.name} →</a>
+      <a href="${root}clients/${prevClient.page}">← ${prevClient.displayCode || prevClient.id}</a>
+      <a href="${root}clients/${nextClient.page}">${nextClient.displayCode || nextClient.id} →</a>
     </div>
   `;
   main.appendChild(pager);

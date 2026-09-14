@@ -1,14 +1,14 @@
 // ======================================================
 // HIGHLIGHT PAGE (work.html)
-// The display order here is reversed (most-recent-first)
-// via a copy of the array — data.js's `highlights` export
-// itself stays in its original order (HL_1..HL_5) since
-// the homepage preview still reads `highlights[0]`.
+// Displayed newest-first via the shared
+// `highlightsInDisplayOrder` export in data.js — the
+// homepage's featured highlight reads from that same
+// array so the two can never fall out of sync.
 // ======================================================
 import { renderNavbar } from "../components/nav.js";
 import { renderFooter } from "../components/footer.js";
 import { renderHighlightFeed } from "../components/highlightFeed.js";
-import { highlights } from "../data.js";
+import { highlightsInDisplayOrder } from "../data.js";
 
 const root = "";
 
@@ -25,4 +25,4 @@ header.innerHTML = `
 `;
 main.appendChild(header);
 
-renderHighlightFeed(main, { highlights: [...highlights].reverse(), root });
+renderHighlightFeed(main, { highlights: highlightsInDisplayOrder, root });

@@ -29,7 +29,6 @@ export function createClientTile(client, { root = "", delay = 0 } = {}) {
   info.className = "client-tile__info";
   info.innerHTML = `
     <div>
-      <p class="client-tile__code">${client.displayCode || client.id}</p>
       <p class="client-tile__name">${client.name}</p>
       <p class="client-tile__name-arabic">${client.arabicName}</p>
     </div>

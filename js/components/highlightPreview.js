@@ -1,16 +1,20 @@
 // ======================================================
 // THE HIGHLIGHTS (highlight preview) COMPONENT
-// Homepage gateway into work.html, using HL_1. The card
-// is sized to match the video itself (no separate text
-// panel) — the eyebrow/title/CTA are overlaid on the
-// video's top-left corner instead.
+// Homepage gateway into work.html, using whichever
+// highlight appears FIRST on the Highlight page
+// (highlightsInDisplayOrder[0], currently HL_5) — the same
+// shared array the Highlight page itself renders from, so
+// the two can never fall out of sync. The card is sized to
+// match the video itself (no separate text panel) — the
+// eyebrow/title/CTA are overlaid on the video's top-left
+// corner instead.
 // ======================================================
-import { highlights } from "../data.js";
+import { highlightsInDisplayOrder } from "../data.js";
 import { getHighlightVideoSrc, getPosterSrc } from "../media.js";
 import { createVideoTile } from "./videoTile.js";
 
 export function renderHighlightPreview(mount, { root = "" } = {}) {
-  const featured = highlights[0]; // HL_1
+  const featured = highlightsInDisplayOrder[0];
 
   const section = document.createElement("section");
   section.className = "gallery best-content-section";

@@ -138,6 +138,34 @@ export const clients = [
     ],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
+  {
+    // NEW CLIENT — a separate organization from "Diriyah"
+    // above (id "DIR"). Its own internal id is "DIR_CLUB"
+    // so routing/lookups never collide with the existing
+    // Diriyah client; `displayCode` is what actually shows
+    // as "DIR" in the bottom client-to-client navigation,
+    // per the explicit request. NOTE: this means both this
+    // client and the existing "Diriyah" will show "DIR" in
+    // that navigation — flagged in the summary, since the
+    // request assigned the same short code to two clients.
+    id: "DIR_CLUB",
+    page: "diriyah-club.html",
+    folder: "dir-club",
+    logo: "diriyah-club.png",
+    displayCode: "DIR",
+    name: "Diriyah Club",
+    arabicName: "نادي الدرعية",
+    // No videos uploaded yet — these are slot identifiers
+    // only (matching every other client's filename-based
+    // `videos` array), not invented URLs. Nothing in
+    // media.js maps them to a Cloudinary URL and no local
+    // file exists yet, so each renders the site's existing
+    // graceful "Video pending upload" fallback until real
+    // Cloudinary URLs are added to media.js later.
+    featuredVideo: "DIR_CLUB_1.MOV",
+    videos: ["DIR_CLUB_1.MOV", "DIR_CLUB_2.MOV", "DIR_CLUB_3.MOV", "DIR_CLUB_4.MOV"],
+    featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
+  },
 ];
 
 // ------------------------------------------------------
@@ -200,3 +228,15 @@ export const highlights = [
     url: "https://www.tiktok.com/@saudi_sfa/video/7585213913936006407?is_from_webapp=1",
   },
 ];
+
+// ------------------------------------------------------
+// HIGHLIGHTS — DISPLAY ORDER (single source of truth)
+// The Highlight page shows highlights newest-first
+// (HL_5, HL_4, HL_3, HL_2, HL_1). The Home page's featured
+// highlight must always be the exact same video as
+// whichever highlight appears FIRST on the Highlight page,
+// so both read from this one derived array rather than
+// each hardcoding an id/index — if the order above ever
+// changes, both pages stay in sync automatically.
+// ------------------------------------------------------
+export const highlightsInDisplayOrder = [...highlights].reverse();

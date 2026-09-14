@@ -30,7 +30,7 @@ export function renderPerformanceStats(container, { clientName, metrics }) {
     </div>
   `;
 
-  container.className = "stats";
+  container.classList.add("stats");
   container.innerHTML = `
     <p class="stats__client">${clientName}</p>
     <div class="stats__meta-row">
