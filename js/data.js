@@ -142,28 +142,21 @@ export const clients = [
     // NEW CLIENT — a separate organization from "Diriyah"
     // above (id "DIR"). Its own internal id is "DIR_CLUB"
     // so routing/lookups never collide with the existing
-    // Diriyah client; `displayCode` is what actually shows
-    // as "DIR" in the bottom client-to-client navigation,
-    // per the explicit request. NOTE: this means both this
-    // client and the existing "Diriyah" will show "DIR" in
-    // that navigation — flagged in the summary, since the
-    // request assigned the same short code to two clients.
+    // Diriyah client. `displayCode` is "DIR CLUB" (not
+    // "DIR") specifically so the bottom client-to-client
+    // navigation can never be ambiguous between the two.
     id: "DIR_CLUB",
     page: "diriyah-club.html",
     folder: "dir-club",
     logo: "diriyah-club.png",
-    displayCode: "DIR",
+    displayCode: "DIR CLUB",
     name: "Diriyah Club",
     arabicName: "نادي الدرعية",
-    // No videos uploaded yet — these are slot identifiers
-    // only (matching every other client's filename-based
-    // `videos` array), not invented URLs. Nothing in
-    // media.js maps them to a Cloudinary URL and no local
-    // file exists yet, so each renders the site's existing
-    // graceful "Video pending upload" fallback until real
-    // Cloudinary URLs are added to media.js later.
-    featuredVideo: "DIR_CLUB_1.MOV",
-    videos: ["DIR_CLUB_1.MOV", "DIR_CLUB_2.MOV", "DIR_CLUB_3.MOV", "DIR_CLUB_4.MOV"],
+    featuredVideo: "DIR_CLUB_3.MOV",
+    videos: [
+      "DIR_CLUB_3.MOV", "DIR_CLUB_4.MOV", "DIR_CLUB_2.MOV",
+      "DIR_CLUB_1.MOV", "DIR_CLUB_5.MOV",
+    ],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
 ];
