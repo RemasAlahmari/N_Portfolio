@@ -69,8 +69,12 @@ export const clients = [
     logo: "sef.png",
     name: "Saudi Esports Federation",
     arabicName: "الاتحاد السعودي للرياضات الإلكترونية",
-    featuredVideo: "SEF_1.MOV",
-    videos: ["SEF_1.MOV", "SEF_2.MOV", "SEF_3.MOV", "SEF_4.MOV", "SEF_5.MOV", "SEF_6.MOV"],
+    // NOTE: the current video files use the "SFE" spelling
+    // (not "SEF") in their actual filenames/Cloudinary
+    // public IDs — kept exactly as provided. The client's
+    // name/id/short code remain "SEF" as instructed.
+    featuredVideo: "SFE_1.MOV",
+    videos: ["SFE_2.MOV", "SFE_4.MOV", "SFE_3.MOV", "SFE_1.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
   {
@@ -80,11 +84,8 @@ export const clients = [
     logo: "diriyah.png",
     name: "Diriyah",
     arabicName: "الدرعية",
-    featuredVideo: "DIR_1.MOV",
-    videos: [
-      "DIR_1.MOV", "DIR_2.MOV", "DIR_3.MOV", "DIR_4.MOV",
-      "DIR_5.MOV", "DIR_6.MOV", "DIR_7.MOV", "DIR_8.MOV",
-    ],
+    featuredVideo: "DIR_2.MOV",
+    videos: ["DIR_4.MOV", "DIR_3.MOV", "DIR_2.MOV", "DIR_1.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
   {
@@ -94,8 +95,8 @@ export const clients = [
     logo: "qiddiya.png",
     name: "Qiddiya",
     arabicName: "القدية",
-    featuredVideo: "QID_2.MOV",
-    videos: ["QID_1.MOV", "QID_2.MOV", "QID_3.MOV"],
+    featuredVideo: "QID_1.MOV",
+    videos: ["QID_3.MOV", "QID_1.MOV", "QID_2.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
   {
@@ -105,8 +106,8 @@ export const clients = [
     logo: "tpac.png",
     name: "Theater and Performing Arts Commission",
     arabicName: "هيئة المسرح والفنون الأدائية",
-    featuredVideo: "TPAC_2.MOV",
-    videos: ["TPAC_1.MOV", "TPAC_2.MOV", "TPAC_3.MOV"],
+    featuredVideo: "TPAC_3.MOV",
+    videos: ["TPAC_3.MOV", "TPAC_1.MOV", "TPAC_2.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
   {
@@ -117,11 +118,11 @@ export const clients = [
     displayCode: "MOH",
     name: "Ministry of Health",
     arabicName: "وزارة الصحة",
-    featuredVideo: "MOF_HAJJ_4.MOV",
-    videos: [
-      "MOF_HAJJ_1.MOV", "MOF_HAJJ_2.MOV", "MOF_HAJJ_3.MOV", "MOF_HAJJ_4.MOV",
-      "MOF_HAJJ_7.MOV", "MOF_HAJJ_8.MOV", "MOF_HAJJ_13.MOV",
-    ],
+    // NOTE: the current video files use the "MOH" prefix
+    // (the previous "MOF_HAJJ_*" videos have been retired —
+    // see media.js for the removed old entries).
+    featuredVideo: "MOH_2.MOV",
+    videos: ["MOH_2.MOV", "MOH_1.MOV", "MOH_3.MOV", "MOH_4.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
   {
@@ -132,10 +133,7 @@ export const clients = [
     name: "Saudi Sports for All Federation",
     arabicName: "الاتحاد السعودي للرياضة للجميع",
     featuredVideo: "SFA_1.MOV",
-    videos: [
-      "SFA_1.MOV", "SFA_2.MOV", "SFA_3.MOV", "SFA_4.MOV",
-      "SFA_7.MOV", "SFA_9.MOV", "SFA_12.MOV", "SFA_13.MOV",
-    ],
+    videos: ["SFA_4.MOV", "SFA_3.MOV", "SFA_1.MOV", "SFA_2.MOV"],
     featuredMetadata: { platform: "TBD", views: "TBD", likes: "TBD", shares: "TBD", url: "TBD" },
   },
   {

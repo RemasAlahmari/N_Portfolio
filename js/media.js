@@ -19,92 +19,70 @@ import { clients } from "./data.js";
 // Add each uploaded video's permanent Cloudinary URL here.
 // Example:
 //
-// "SEF_1.MOV":
-//   "https://res.cloudinary.com/otquvk5k/video/upload/v1787229013/SEF_1.mov",
+// "DIR_1.MOV":
+//   "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789479892/DIR_1.mov",
 // ------------------------------------------------------
 
 const clientVideoUrls = {
   // Saudi Esports Federation
-  "SEF_1.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787229013/SEF_1.mov",
-  "SEF_2.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787420344/SEF_2.mov",
-  "SEF_3.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787420251/SEF_3.mov",
-  "SEF_4.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787419938/SEF_4.mov",
-  "SEF_5.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787420237/SEF_5.mov",
-  "SEF_6.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787420097/SEF_6.mov",
+  // NOTE: current video files use the "SFE" spelling in
+  // their filenames/public IDs, kept exactly as provided.
+  "SFE_1.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789478657/SFE_1.mov",
+  "SFE_2.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480616/SFE_2.mov",
+  "SFE_3.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789479692/SFE_3.mov",
+  "SFE_4.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480522/SFE_4.mov",
 
   // Diriyah
   "DIR_1.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787422201/DIR_1.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789479892/DIR_1.mov",
   "DIR_2.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787510194/DIR_2.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480130/DIR_2.mov",
   "DIR_3.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787510157/DIR_3.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480235/DIR_3.mov",
   "DIR_4.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787510261/DIR_4.mov",
-  "DIR_5.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787510302/DIR_5.mov",
-  "DIR_6.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787510168/DIR_6.mov",
-  "DIR_7.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787510176/DIR_7.mov",
-  "DIR_8.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787510525/DIR_8.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480390/DIR_4.mov",
 
   // Qiddiya
   "QID_1.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787421039/QID_1.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789483255/QID_1.mp4",
   "QID_2.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787511656/QID_2.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789486344/QID_2.mp4",
   "QID_3.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787513712/QID_3.mp4",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789476997/QID_3.mp4",
 
   // Theater and Performing Arts Commission
   "TPAC_1.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787418114/TPAC_1.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789482880/TPAC_1.mp4",
   "TPAC_2.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787570855/TPAC_2.mp4",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789478650/TPAC_2.mp4",
   "TPAC_3.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787512316/TPAC_3.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789483237/TPAC_3.mp4",
 
   // Ministry of Health
-  "MOF_HAJJ_1.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787425112/mof-hajj_1.mov",
-  "MOF_HAJJ_2.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787573885/mof-hajj_2.mov",
-  "MOF_HAJJ_3.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787579729/mof-hajj_3.mp4",
-  "MOF_HAJJ_4.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787854764/mof-hajj_4.mp4",
-  "MOF_HAJJ_7.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787573908/mof-hajj_7.mov",
-  "MOF_HAJJ_8.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787573791/mof-hajj_8.mov",
-  "MOF_HAJJ_13.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787574093/mof-hajj_13.mov",
+  // NOTE: current video files use the "MOH" prefix; the
+  // previous "MOF_HAJJ_*" videos have been retired.
+  "MOH_1.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480700/MOH_1.mov",
+  "MOH_2.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789478018/MOH_2.mp4",
+  "MOH_3.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789487573/MOH_3.mp4",
+  "MOH_4.MOV":
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789488006/MOH_4.mp4",
 
-  // Saudi Sports for All Federation (non-consecutive on purpose — see data.js)
+  // Saudi Sports for All Federation
   "SFA_1.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787424345/SFA_1.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480802/SFA_1.mov",
   "SFA_2.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787573663/SFA_2.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789478548/SFA_2.mp4",
   "SFA_3.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787579766/SFA_3.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480883/SFA_3.mov",
   "SFA_4.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787580365/SFA_4.mov",
-  "SFA_7.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787851706/SFA_7.mov",
-  "SFA_9.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787851847/SFA_9.mov",
-  "SFA_12.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787852051/SFA_12.mov",
-  "SFA_13.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1788111291/SFA_13.mp4",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789481936/SFA_4.mov",
 
   // Diriyah Club
   "DIR_CLUB_1.MOV":
@@ -130,15 +108,15 @@ const clientVideoUrls = {
 
 const highlightVideoUrls = {
   "HL_1.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787854764/mof-hajj_4.mp4",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789478018/MOH_2.mp4",
   "HL_2.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787579729/mof-hajj_3.mp4",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789487573/MOH_3.mp4",
   "HL_3.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787425112/mof-hajj_1.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789488006/MOH_4.mp4",
   "HL_4.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1788111291/SFA_13.mp4",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789478548/SFA_2.mp4",
   "HL_5.MOV":
-    "https://res.cloudinary.com/otquvk5k/video/upload/v1787424345/SFA_1.mov",
+    "https://res.cloudinary.com/hcbv5n7p/video/upload/v1789480802/SFA_1.mov",
 };
 
 // ------------------------------------------------------
